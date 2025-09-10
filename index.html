@@ -1,11 +1,727 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>포트폴리오</title>
+    <title>예찬 Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Prism.js CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+<!-- Prism.js JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
   </head>
   <body>
-    <!-- 포트폴리오사이트 -->
+    <!-- Sidebar -->
+<aside class="sidebar">
+    <a href="#interview" class="nav-btn">Interview</a>
+  <a href="#projects" class="nav-btn">Projects</a>
+  <a href="#skills" class="nav-btn">Skills</a>
+  <a href="#education" class="nav-btn">Education</a>
+  <a href="#certifications" class="nav-btn">Certifications</a>
+</aside>
+
+
+   <!-- Hero -->
+<!-- Hero -->
+<section class="hero panel fade-section" id="hero">
+  <div class="hero-vertical">
+
+    <!-- 첫 줄: Hero 텍스트 -->
+    <div class="hero-text">
+      <h1><span class="big">Full-Stack</span></h1>
+      <h2>풀스택 개발자 <strong>성예찬</strong>입니다.</h2>
+      <p>
+        문제를 끝까지 추적하고 해결하는 <strong>집요함</strong>, <br>
+        협업과 소통을 중시하는 <strong>팀워크</strong>, <br>
+        새로운 도전을 즐기는 <strong>성장형 개발자</strong>입니다.
+      </p>
+    </div>
+
+    <!-- 두 번째 줄: 프로필 + Contact -->
+    <div class="hero-row">
+      <!-- 원형 프로필 -->
+      <div class="profile-pic">
+        <img src="./증명사진.jpg" alt="프로필 사진" />
+      </div>
+
+      <!-- Contact 박스 -->
+      <div class="contact-box" >
+        <h2>Contact</h2>
+        <div class="box">
+        <img src="Gmail.png" alt="Gmail" class="icon">
+        <span class="mail-text">yechan0422@gmail.com</span>
+      </div>
+        <div class="box">
+        <img src="GitHub.png" alt="Gmail" class="git-icon">
+         <a class="text" href="https://github.com/Walker4990/book-project-main" target="_blank">
+    GitHub
+  </a>
+      </div>
+      <div class="box">
+        <img src="./velog.jpg" alt="Gmail" class="v-icon">
+          <a class="text" href="https://velog.io/@walker4990/posts" target="_blank">
+    Velog
+  </a>
+      </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Interview -->
+    <section id="interview" class="interview-section panel fade-section">
+      <h1>Interview</h1>
+      <div class="qa-container">
+        <div class="qa-card">
+          <h3>Q. 문제 해결 경험을 어떻게 개발에 활용했나요?</h3>
+          <p>
+            7년간 요리사로 일하며 제한된 자원 속에서도
+            <strong>원인 분석 → 대안 실행 → 피드백 개선</strong> 과정을
+            반복했습니다.<br /><br />
+            이 경험은 ERP·급여·재무 시스템 개발에도 그대로 이어졌고,
+            <strong>연동 오류 해결로 업무 처리 속도 50% 단축</strong>,
+            <strong
+              >급여 모듈 개선 및 세금 자동화로 데이터 정합성 100% 확보</strong
+            >라는 성과를 냈습니다.
+          </p>
+        </div>
+
+        <div class="qa-card">
+          <h3>Q. 협업 과정에서 어떤 가치를 두고 있나요?</h3>
+          <p>
+            ERP 프로젝트에서 발생한 오류와 개선 과제는 혼자서는 해결하기
+            어려웠습니다.<br /><br />
+            저는 팀원들과 문제를 빠르게 공유하고, 다양한 의견을 반영해 보너스
+            입력 실시간 반영, 트랜잭션 재설계 등
+            <strong>사용자 경험을 개선하는 기능</strong>을 완성했습니다.
+          </p>
+        </div>
+
+        <div class="qa-card">
+          <h3>Q. 앞으로 어떤 개발자가 되고 싶나요?</h3>
+          <p>
+            새로운 환경에 빠르게 적응하는 것을 넘어,
+            <strong>환경을 더 나은 방향으로 바꾸는 개발자</strong>가 되고
+            싶습니다.<br /><br />
+            앞으로도 문제를 끝까지 추적하며,
+            <strong>수치와 성과로 증명할 수 있는 신뢰받는 개발자</strong>로
+            성장하겠습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    
+<!-- Projects -->
+<section id="projects" class="projects-section panel fade-section">
+  <h1>Projects</h1>
+  <div class="project-container">
+    <!-- ERP Project Card -->
+    <div class="project-card" onclick="openModal('erp')">
+      <img src="./달의 서재.png" alt="ERP 프로젝트" />
+      <h3>출판사 ERP 시스템</h3>
+      <p>발주, 재고, 출고, 재무 모듈을 연동한 ERP 시스템 개발</p>
+    </div>
+
+    <!-- Billing Project Card -->
+    <div class="project-card" onclick="openModal('billing')">
+      <img src="./Recurv.png" alt="정기 결제 시스템" />
+      <h3>정기 결제 관리 시스템</h3>
+      <p>스타트업 맞춤형 정기 결제/정산 관리 시스템</p>
+    </div>
+  </div>
+</section>
+
+<!-- ERP Modal -->
+<div id="erpModal" class="modal">
+  <div class="modal-content">
+    
+    <!-- 헤더 -->
+    <div class="modal-header">
+      <h1>ENGrp</h1>
+      <span class="close" onclick="closeModal('erp')">&times;</span>
+    </div>
+
+    <!-- 본문 (스크롤 영역) -->
+    <div class="modal-body">
+      <ul>
+      <p>
+        KH 정보교육원 KDT트레이닝 교육 기간 중 진행한 세미 프로젝트로 ERP를 구현했습니다.<br>
+    <a href="https://official.hellogsm.kr/" target="_blank" class="btn-link">배포 후 수정</a> ㅤㅤ
+    <a href="https://github.com/monchaeeun/book-project" target="_blank" class="btn-link">Github</a>
+      </p>
+      
+      <p>기간: 2025.08.08 ~ 2025.09.12</p>
+      <p>인원: 5명 (팀 프로젝트)</p>  
+      <p>기여도: BackEnd 55% | FrontEnd 30%</p>
+</ul>
+      <h2>👩🏻‍💻 내가 기여한 부분</h2>
+      <ul>
+         <strong>[출고 트랜잭션 성능 개선]</strong> 응답속도 297ms → 5ms, 커밋 비용 90%↓, 재고 오류 0건 보장
+   
+<table style="width:100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; text-align: center;">
+  <thead>
+    <tr style="background: #444; color: #fff;">
+      <th style="padding: 8px; border: 1px solid #666;">동시 사용자</th>
+      <th style="padding: 8px; border: 1px solid #666;">평균 응답속도</th>
+      <th style="padding: 8px; border: 1px solid #666;">최대 응답속도</th>
+      <th style="padding: 8px; border: 1px solid #666;">Error율</th>
+      <th style="padding: 8px; border: 1px solid #666;">TPS (초당 처리량)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 6px; border: 1px solid #666;">Before</td>
+      <td style="padding: 6px; border: 1px solid #666;">297ms+ (지연 심각)</td>
+      <td style="padding: 6px; border: 1px solid #666;">500ms+ (Timeout 발생)</td>
+      <td style="padding: 6px; border: 1px solid #666;">❌ 100%</td>
+      <td style="padding: 6px; border: 1px solid #666;">❌ 처리 실패</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px; border: 1px solid #666;">After (50명)</td>
+      <td style="padding: 6px; border: 1px solid #666;">17ms</td>
+      <td style="padding: 6px; border: 1px solid #666;">46ms</td>
+      <td style="padding: 6px; border: 1px solid #666;">✅ 0%</td>
+      <td style="padding: 6px; border: 1px solid #666;">1.8/sec</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px; border: 1px solid #666;">After (100명)</td>
+      <td style="padding: 6px; border: 1px solid #666;">16ms</td>
+      <td style="padding: 6px; border: 1px solid #666;">32ms</td>
+      <td style="padding: 6px; border: 1px solid #666;">✅ 0%</td>
+      <td style="padding: 6px; border: 1px solid #666;">3.4/sec</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px; border: 1px solid #666;">After (200명)</td>
+      <td style="padding: 6px; border: 1px solid #666;">14ms</td>
+      <td style="padding: 6px; border: 1px solid #666;">32ms</td>
+      <td style="padding: 6px; border: 1px solid #666;">✅ 0%</td>
+      <td style="padding: 6px; border: 1px solid #666;">6.7/sec</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px; border: 1px solid #666;">After (300명)</td>
+      <td style="padding: 6px; border: 1px solid #666;">13ms</td>
+      <td style="padding: 6px; border: 1px solid #666;">31ms</td>
+      <td style="padding: 6px; border: 1px solid #666;">✅ 0%</td>
+      <td style="padding: 6px; border: 1px solid #666;">10/sec</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px; border: 1px solid #666;">After (1000명)</td>
+      <td style="padding: 6px; border: 1px solid #666;">13ms</td>
+      <td style="padding: 6px; border: 1px solid #666;">38ms</td>
+      <td style="padding: 6px; border: 1px solid #666;">⚠️ 0.08%</td>
+      <td style="padding: 6px; border: 1px solid #666;">8.8/sec</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        <p><strong>[재고 관리 최적화]</strong> Redis 캐시 적용 → 응답속도 55배 개선</p>
+        <table style="width:100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; text-align: center;">
+  <thead>
+    <tr style="background: #444; color: #fff;">
+      <th style="padding: 8px; border: 1px solid #666;">동시 사용자</th>
+      <th style="padding: 8px; border: 1px solid #666;">평균 응답(ms) Before</th>
+      <th style="padding: 8px; border: 1px solid #666;">평균 응답(ms) After</th>
+      <th style="padding: 8px; border: 1px solid #666;">Error%</th>
+      <th style="padding: 8px; border: 1px solid #666;">TPS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 6px; border: 1px solid #666;">1</td>
+      <td style="padding: 6px; border: 1px solid #666;">39</td>
+      <td style="padding: 6px; border: 1px solid #666;"><strong>3</strong></td>
+      <td style="padding: 6px; border: 1px solid #666;">0.0%</td>
+      <td style="padding: 6px; border: 1px solid #666;">85.5/sec</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px; border: 1px solid #666;">50</td>
+      <td style="padding: 6px; border: 1px solid #666;">38</td>
+      <td style="padding: 6px; border: 1px solid #666;"><strong>2</strong></td>
+      <td style="padding: 6px; border: 1px solid #666;">0.0%</td>
+      <td style="padding: 6px; border: 1px solid #666;">8.8/sec</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px; border: 1px solid #666;">100</td>
+      <td style="padding: 6px; border: 1px solid #666;">40</td>
+      <td style="padding: 6px; border: 1px solid #666;"><strong>1</strong></td>
+      <td style="padding: 6px; border: 1px solid #666;">0.0%</td>
+      <td style="padding: 6px; border: 1px solid #666;">17.9/sec</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px; border: 1px solid #666;">500</td>
+      <td style="padding: 6px; border: 1px solid #666;">55</td>
+      <td style="padding: 6px; border: 1px solid #666;"><strong>1</strong></td>
+      <td style="padding: 6px; border: 1px solid #666;">0.0%</td>
+      <td style="padding: 6px; border: 1px solid #666;">83.5/sec</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px; border: 1px solid #666;">1000</td>
+      <td style="padding: 6px; border: 1px solid #666;">55</td>
+      <td style="padding: 6px; border: 1px solid #666;"><strong>1</strong></td>
+      <td style="padding: 6px; border: 1px solid #666;">0.0%</td>
+      <td style="padding: 6px; border: 1px solid #666;">166/sec</td>
+    </tr>
+  </tbody>
+</table>
+        <p><strong>[재무 회계 관리]</strong> 급여·수입/지출·세금 납부 자동화</p>
+        <div class="video-row">
+  <div class="video-card">
+     <h4>엥알피 발주 및 배송완료</h4>
+      <video controls autoplay loop muted class="half-video">
+  <source src="./엥알피 급여등록.mp4" type="video/mp4">
+  브라우저가 video 태그를 지원하지 않습니다.
+</video>
+</div>
+</div>
+        <p><strong>[계약 관리 모듈]</strong> 작가·도서·계약 트랜잭션 기반 동시 등록 및 데이터 정합성 확보</p>
+        
+<p><strong>[발주/검수/출고 시스템]</strong> 전 과정 자동화 및 상태 기반 관리</p>
+
+<div class="video-row">
+  <div class="video-card">
+    <h4>엥알피 발주 및 배송완료</h4>
+    <video controls autoplay loop muted>
+      <source src="./엥알피 발주 및 배송완료.mp4" type="video/mp4">
+      브라우저가 video 태그를 지원하지 않습니다.
+    </video>
+  </div>
+
+  <div class="video-card">
+    <h4>엥알피 품질 검수</h4>
+    <video controls autoplay loop muted>
+      <source src="./엥알피 품질 검수.mp4" type="video/mp4">
+      브라우저가 video 태그를 지원하지 않습니다.
+    </video>
+  </div>
+</div>
+        <p><strong>[메인 대시보드 차트]</strong> Chart.js 시각화 및 Ajax 갱신</p>
+        <img src="./chart.png" width="400px" onclick="openImageModal(this)">
+        <p><strong>[캘린더 계약/휴가 일정 관리]</strong> FullCalendar 연동 및 계약 조회 / 등록 및 휴가 승인/차감 로직</p>
+        <div class="image-row">
+  <img src="./계약등록 캘린더.png" width="400px" onclick="openImageModal(this)">
+  <img src="./캘린더 계약 모달 2025-09-10 121634.png" width="400px" onclick="openImageModal(this)">
+</div>
+      </ul>
+<!-- 이미지 확대 모달 -->
+<div id="imgModal" class="img-modal" onclick="closeImageModal()">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+ 
+
+      <!-- Accordion for Trouble Shooting -->
+      <h2>👟 TROUBLE SHOOTING</h2>
+      <div class="accordion">
+        <button class="accordion-btn">1. 출고(Shipment) 트랜잭션 성능 개선</button>
+       <div class="accordion-content">
+  <h3>🚨 문제 배경</h3>
+  <p>
+    출고 등록(<code>newOutInven</code>)은 정상 동작했지만, 
+    출고 수정(<code>updateOutInven</code>) 요청 시 JMeter 부하 테스트에서 
+    <strong>500 에러 100%</strong> 발생.
+  </p>
+  <ul>
+    <li>평균 응답시간 297ms 이상 → 서비스 지연 심각</li>
+    <li><code>NullPointerException</code> 발생 (<code>stockQuantity</code> 값 누락)</li>
+    <li>DB에서 풀스캔 발생 → 불필요한 부하</li>
+    <li>동시성 제어 부재 → 재고 음수 발생 위험</li>
+  </ul>
+  <hr>
+
+  <h3>📌 개선 방향</h3>
+  <ul>
+    <li>DB 인덱스 최적화 및 쿼리 조건 강화 → 풀스캔 제거</li>
+    <li>출고 수정 로직 개선 → NPE 방지 및 원자적 재고 갱신 보장</li>
+    <li>재무/세금/로열티는 반드시 <strong>정정 INSERT</strong> → 회계 투명성 확보</li>
+    <li>JMeter 부하 테스트로 사용자 수별 성능 곡선 측정</li>
+  </ul>
+  <hr>
+
+  <h3>⭐ 해결 방법</h3>
+  <p><strong>1. 복합 인덱스 생성</strong></p>
+  <pre><code class="language-sql">
+-- Before (풀스캔 발생)
+SELECT * FROM shipment WHERE inventory_no = ?;
+
+-- After (복합 인덱스 적용)
+CREATE INDEX idx_shipment_inven_sn 
+ON shipment (inventory_no, shipment_no DESC);
+  </code></pre>
+
+  <p><strong>2. 출고 수정 쿼리 보완 (단일 행 보장)</strong></p>
+  <pre><code class="language-sql">
+-- Before (다건 수정 위험)
+WHERE inventory_no = #{inventoryNo}
+
+-- After (단건 수정 보장)
+WHERE shipment_no = #{shipmentNo}
+AND inventory_no = #{inventoryNo}
+  </code></pre>
+
+  <p><strong>3. 재고 차감 원자화 처리 (음수 방지)</strong></p>
+  <pre><code class="language-sql">
+UPDATE inventory
+SET quantity = quantity - #{editQuantity}
+WHERE inventory_no = #{inventoryNo}
+AND quantity - #{editQuantity} >= 0;
+  </code></pre>
+
+  <p><strong>4. 서비스 계층 개선 (@Transactional)</strong></p>
+  <pre><code class="language-java">
+// Before
+Integer authorNo   = mapper.getAuthorNo(bookNo);
+Integer contractNo = mapper.getContractNo(bookNo);
+BigDecimal royalty = mapper.getRoyaltyRate(bookNo);
+
+// After
+Map&lt;String, Object&gt; meta = mapper.getBookMeta(bookNo);
+  </code></pre>
+
+  <p><strong>5. JMeter 부하 테스트</strong> → 50 → 100 → 200 → 300 → 1000 users 단계별 시나리오 실행</p>
+  <hr>
+
+  <h3>✅ 성과</h3>
+  <ul>
+    <li>500 에러 및 NPE 완전 해결</li>
+    <li>쿼리 성능 <strong>297ms → 5~7ms</strong> 수준으로 개선</li>
+    <li>300 동시 사용자까지 <strong>Error 0%</strong> 유지</li>
+    <li>1000 동시 사용자에서도 Error 0.08% → DB 병목 아님, 서버 자원 한계 확인</li>
+  </ul>
+
+  <table style="width:100%; border-collapse: collapse; text-align: center; margin-top: 10px;">
+    <thead>
+      <tr style="background:#444; color:#fff;">
+        <th style="padding:6px; border:1px solid #666;">동시 사용자</th>
+        <th style="padding:6px; border:1px solid #666;">평균 응답(ms)</th>
+        <th style="padding:6px; border:1px solid #666;">최대 응답(ms)</th>
+        <th style="padding:6px; border:1px solid #666;">Error%</th>
+        <th style="padding:6px; border:1px solid #666;">TPS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>50</td><td>17</td><td>46</td><td>0.0%</td><td>1.8/sec</td></tr>
+      <tr><td>100</td><td>16</td><td>32</td><td>0.0%</td><td>3.4/sec</td></tr>
+      <tr><td>200</td><td>14</td><td>32</td><td>0.0%</td><td>6.7/sec</td></tr>
+      <tr><td>300</td><td>13</td><td>31</td><td>0.0%</td><td>10/sec</td></tr>
+      <tr><td>1000</td><td>13</td><td>38</td><td>0.08%</td><td>8.8/sec</td></tr>
+    </tbody>
+  </table>
+  <hr>
+
+  <h3>🤩 알게 된 점</h3>
+  <ul>
+    <li>단순 오류 해결이 아니라 <strong>쿼리 실행계획 + 서비스 로직 + 동시성 제어</strong>까지 종합적으로 고려해야 함</li>
+    <li>DB와 애플리케이션의 <strong>병목 원인 구분 능력</strong>이 중요</li>
+    <li>성능 개선은 단순한 속도 향상이 아니라 <strong>정합성 + 안정성 + 확장성</strong>까지 함께 보장해야 함</li>
+  </ul>
+</div>
+
+
+        <button class="accordion-btn">2. 재고 집계 API 성능 개선 (Redis 캐시 적용)</button>
+        <div class="accordion-content">
+  <h3>🚨 문제 배경</h3>
+  <ul>
+    <li>대시보드 화면에서 사용하는 <code>/getInventoryBook</code> API는 책별 재고 수량을 집계해서 보여주는 기능이다.</li>
+    <li>처음에는 단순히 DB에서 직접 조회하도록 구현했는데, 사용자가 늘어나면 같은 API가 반복 호출되면서 DB에 부하 발생.</li>
+    <li>JMeter 부하 테스트 결과:
+      <ul>
+        <li>동시 사용자 100명 → 평균 응답속도 <strong>40ms 이상</strong></li>
+        <li>500명 이상 → 응답속도 증가 및 Throughput 한계 발생</li>
+      </ul>
+    </li>
+    <li>사실 데이터는 자주 바뀌지 않는데도 매번 DB에서 가져와 <strong>비효율적</strong> 문제가 있었다.</li>
+  </ul>
+  <hr>
+
+  <h3>📌 개선 방향</h3>
+  <ul>
+    <li><code>/getInventoryBook</code> API는 단순 재고 현황 조회 기능 → 매 호출마다 DB 접근은 비효율적</li>
+    <li>자주 조회되지만 큰 변화가 없는 데이터 → <strong>Redis 캐시</strong> 활용</li>
+    <li>Spring <code>@Cacheable</code> 적용, TTL(10분) 설정으로 데이터 신선도 보장</li>
+    <li>JMeter로 캐시 전/후 성능 비교 측정 → 개선 효과 수치화</li>
+  </ul>
+  <hr>
+
+  <h3>⭐ 해결 방법</h3>
+  <p><strong>1. 서비스 메서드에 캐시 적용</strong></p>
+  <pre><code class="language-java">
+@Cacheable(cacheNames = "inventory:bookList", sync = true)
+public List&lt;Map&lt;String, Object&gt;&gt; getInventoryBook() {
+    return mapper.getInventoryBook();
+}
+  </code></pre>
+
+  <p><strong>2. application.properties 설정</strong></p>
+  <pre><code class="language-properties">
+spring.data.redis.host=localhost
+spring.data.redis.port=6379
+spring.cache.type=redis
+spring.cache.redis.time-to-live=600000   # 10분
+  </code></pre>
+
+  <p><strong>3. Docker 환경에서 Redis 실행</strong></p>
+  <pre><code class="language-bash">
+docker run -d --name redis -p 6379:6379 redis:latest
+  </code></pre>
+
+  <p><strong>4. JMeter 부하 테스트</strong> → 1 → 50 → 100 → 500 → 1000 users 단계별 실행</p>
+  <hr>
+
+  <h3>✅ 성과</h3>
+  <ul>
+    <li>평균 응답속도: 캐시 전 <strong>40~55ms</strong> → 캐시 후 <strong>1~3ms</strong></li>
+    <li>최대 55배 성능 개선</li>
+    <li>동시 사용자 1000명까지 <strong>Error 0%, 선형 확장성 확보</strong></li>
+    <li>Throughput 166/sec 수준으로 안정 유지</li>
+    <li>DB 부하 감소 → 출고, 계약, 급여 등 다른 트랜잭션 처리 여유 확보</li>
+  </ul>
+
+  <table style="width:100%; border-collapse: collapse; text-align: center; margin-top: 10px;">
+    <thead>
+      <tr style="background:#444; color:#fff;">
+        <th style="padding:6px; border:1px solid #666;">동시 사용자</th>
+        <th style="padding:6px; border:1px solid #666;">평균 응답(ms) Before</th>
+        <th style="padding:6px; border:1px solid #666;">평균 응답(ms) After</th>
+        <th style="padding:6px; border:1px solid #666;">Error%</th>
+        <th style="padding:6px; border:1px solid #666;">TPS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>39</td><td><strong>3</strong></td><td>0.0%</td><td>85.5/sec</td></tr>
+      <tr><td>50</td><td>38</td><td><strong>2</strong></td><td>0.0%</td><td>8.8/sec</td></tr>
+      <tr><td>100</td><td>40</td><td><strong>1</strong></td><td>0.0%</td><td>17.9/sec</td></tr>
+      <tr><td>500</td><td>55</td><td><strong>1</strong></td><td>0.0%</td><td>83.5/sec</td></tr>
+      <tr><td>1000</td><td>55</td><td><strong>1</strong></td><td>0.0%</td><td>166/sec</td></tr>
+    </tbody>
+  </table>
+  <hr>
+
+  <h3>🤩 알게 된 점</h3>
+  <ul>
+    <li>단순 SQL 튜닝만으로는 한계 → <strong>캐시 전략 필요</strong></li>
+    <li>성능 개선은 “속도”뿐 아니라 <strong>확장성과 안정성</strong>까지 고려해야 함</li>
+    <li>JMeter 활용 → <strong>측정 → 병목 분석 → 개선 → 재측정</strong> 과정 반복의 중요성</li>
+    <li>“DB 튜닝”뿐 아니라 <strong>아키텍처 개선</strong>이 성능을 크게 끌어올릴 수 있음을 체감</li>
+  </ul>
+</div>
+
+        <button class="accordion-btn">3. 급여 등록 / 지급 UX 개선</button>
+     <div class="accordion-content">
+  <h3>3. 급여 등록 / 지급 UX 개선</h3>
+
+  <h4>🚨 문제 배경</h4>
+  <p>
+    직원 수가 많아질수록 급여 등록을 <strong>개별 입력</strong>으로 처리하는 것은 비효율적이었고, 
+    보너스/OT 입력 시 값이 테이블에 실시간 반영되지 않아 <strong>재입력·새로고침</strong>이 반복되는 문제가 발생.
+  </p>
+  <hr>
+
+  <h4>⭐ 해결 방법</h4>
+  <p><strong>급여 담당자 UX 개선 목표</strong>: “등록 → 지급 → 확인” 과정을 한눈에 직관적으로 볼 수 있도록 설계.</p>
+  <ul>
+    <li><strong>급여 등록</strong>
+      <ul>
+        <li>실시간 검색 자동 추가: jQuery Ajax 기반으로 이름/사번 입력 시 Ajax 호출 → 검색 결과를 하단 테이블에 <code>append()</code></li>
+        <li>보너스 입력 시 실시간 계산: <code>.on("input")</code> 이벤트로 세금·총액 즉시 재계산 → 테이블과 hidden input 값에 반영</li>
+        <li>세금 계산 자동화:
+          <ul>
+            <li>과세 소득 = 기본급 + 직책 수당 + 보너스 + OT</li>
+            <li>공제 = 국민연금(4.5%) + 건강보험(3.5%) + 고용보험(0.9%) + 소득세(8%) + 지방세(10%)</li>
+            <li>실수령액 = 과세 소득 + 식대 – 공제</li>
+          </ul>
+        </li>
+        <li>데이터 보존: 입력 값을 <code>bonusMap</code>에 저장해 재검색 시에도 값 유지</li>
+      </ul>
+    </li>
+    <li><strong>급여 지급</strong>
+      <ul>
+        <li>일괄 지급 처리: 전 직원 데이터를 Ajax + JSON(FormData)로 전송 → Spring Controller <code>@RequestBody</code>로 리스트 수신</li>
+        <li>다건 Insert 처리: MyBatis <code>&lt;foreach&gt;</code> 구문으로 <code>payroll</code> 테이블에 다건 insert</li>
+        <li>지급 상태 확인: 지급 완료 후 JSP 테이블의 <code>.statusField</code> 업데이트 → 관리자 즉시 확인</li>
+      </ul>
+    </li>
+  </ul>
+  <hr>
+
+  <h4>✅ 성과</h4>
+  <ul>
+    <li>급여 등록: <strong>실시간 검색 → 선택 → 입력 → 계산</strong>이 한 화면에서 가능</li>
+    <li>급여 지급: <strong>일괄 처리 + 지급 상태 확인</strong>으로 실제 인사·회계 팀의 업무 흐름과 일치</li>
+  </ul>
+  <hr>
+
+  <h4>🤩 알게 된 점</h4>
+  <ul>
+    <li><strong>실시간 반영 로직</strong>이 UX 개선에 미치는 효과 체감</li>
+    <li><strong>다건 insert + 트랜잭션</strong> 적용으로 안정적인 급여 지급 보장</li>
+    <li>업무 프로세스를 단순 기능 구현이 아닌 <strong>사용자 관점(UX)</strong>에서 설계하는 것의 중요성 학습</li>
+  </ul>
+</div>
+
+        <button class="accordion-btn">4. 품질 검수 / 클레임 처리 로직 혼선</button>
+       <div class="accordion-content">
+  <h3>4. 품질 검수 / 클레임 처리 로직 혼선</h3>
+
+  <h4>🚨 문제 배경</h4>
+  <p>
+    초기에는 발주 완료 즉시 재고에 등록되도록 구현했는데, 이렇게 하면 <strong>검수 과정이 생략</strong>되어 
+    불량 수량이 누락되고 재무/재고 데이터가 왜곡되는 문제가 발생.
+  </p>
+  <hr>
+
+  <h4>📌 개선 방향</h4>
+  <ul>
+    <li>현업에서는 배송사 API 연동으로 <strong>배송완료 자동 처리</strong>가 가능하지만, 
+        프로젝트 환경에서는 실제 판매·배송 데이터가 없어 API 사용 불가</li>
+    <li>따라서 개발 단계에서는 <strong>배송완료 상태를 직접 입력</strong>하도록 설계 → 이후 검수 테이블로 이동 보장</li>
+    <li><strong>흐름</strong>: 발주 → 배송 → 배송완료 시 검수 → 검수 완료 후 수량 입력 → 합격 수량만 재고 등록 → 부족 수량은 추가 발주</li>
+  </ul>
+  <hr>
+
+  <h4>⭐ 해결 방법</h4>
+  <ul>
+    <li>배송 완료 버튼을 눌러야 검수 가능하도록 조건 분기</li>
+    <li>검수 시: 합격 수량만 재고 IN, 불량 수량은 품질 데이터에만 기록 (재무 반영 ❌)</li>
+    <li>클레임 처리 시:
+      <ul>
+        <li>회수 가능 + 회수 완료 → 재고 IN + 환불 처리</li>
+        <li>회수 불가 → 환불 처리만, 재고에는 반영 ❌</li>
+      </ul>
+    </li>
+    <li>Service 계층에서 분기 로직 구현, Mapper XML에서 상태값별 SQL 분리</li>
+  </ul>
+  <hr>
+
+  <h4>🤩 알게 된 점</h4>
+  <ul>
+    <li><strong>비즈니스 로직은 DB보다 서비스 계층에서 관리</strong>하는 것이 유지보수에 유리</li>
+    <li><strong>트랜잭션</strong>이 데이터 정합성 보장의 핵심임을 직접 경험</li>
+    <li><strong>실패 시나리오까지 검증</strong>하는 습관이 안정적 시스템 운영에 필수</li>
+    <li>SQLD 학습 개념이 실제 프로젝트 의사결정에 <strong>실질적으로 도움</strong>이 됨</li>
+  </ul>
+</div>
+      </div>
+           <h2>🖥️ TECH STACK</h2>
+     <ul>
+       <p> <strong>Spring Boot 3.5:</strong> 경량화 된 설정과 내장 Tomcat으로 빠른 개발 환경 구성, REST API 기반 서비스 개발에 활용</p>
+       <p> <strong>MyBatis:</strong> SQL 직접 제어를 통해 복잡한 <strong>트랜잭션(발주→재고→출고→재무) </strong>처리 로직을 명확하게 구현</p>
+       <p> <strong>MySQL 8.0:</strong> 외래 키 · 체크 제약 조건 활용으로 데이터 정합성 확보, 트랜잭션 기반 회계 기록 관리</p>
+       <p> <strong>JSP / JSTL: </strong>빠른 화면 개발과 MVC 패턴 기반 View 단 구현</p>
+       <p> <strong>jQuery / Ajax: </strong>모달 기반 CRUD, <strong>비동기 캘린더·차트 데이터 갱신</strong>에 활용</p>
+       <p> <strong>Chart.js: </strong>월 별 수익/지출 추세, 품질검수 불량률 등 주요 지표를 시각화하여 대시 보드 구현</p>
+       <p> <strong>FullCalendar:</strong> 휴가 · 근태 일정 관리 달력 구현 (날짜 선택 → 모달 신청 → 즉시 반영)</p>
+       <p> <strong>Spring Security:</strong> 인증 사용자 세션 기반 접근 권한 제어 (관리자 전용 메뉴/기능 분리)</p>
+       <p> <strong>Redis : </strong>조회 성능 최적화에 활용 <code>@Cacheable</code>+ TTL(10분) 캐시 적용으로 <strong>DB 부하 감소 및 응답 속도 55배 개선</strong></p>
+       <p> <strong>JMeter :</strong> 성능 및 부하 테스트 도구 50 → 1000명 동시 사용자 시나리오 테스트를 통해<strong>응답 시간 · TPS · Error율</strong> 지표를 정량적으로 검증.</p>
+      </ul>
+    </div>
+
+    <!-- 푸터 (본문 밖, 고정) -->
+    <div class="modal-footer">
+      <button onclick="closeModal('erp')">닫기</button>
+    
+    </div>
+    
+  </div>
+</div>
+<!-- Skills -->
+    <section id="skills" class="skills-section panel fade-section">
+      <h1>Skills</h1>
+      <div class="qa-container">
+        <div class="qa-card">
+          <h3>Language</h3>
+          <ul>
+            <li>Java</li>
+            <li>JavaScript</li>
+          </ul>
+        </div>
+
+        <div class="qa-card">
+          <h3>Framework</h3>
+          <ul>
+            <li>Spring Boot</li>
+            <li>MyBatis</li>
+            <li>JSP / JSTL</li>
+            <li>React</li>
+          </ul>
+        </div>
+
+        <div class="qa-card">
+          <h3>Database</h3>
+          <ul>
+            <li>Oracle</li>
+            <li>MySQL</li>
+          </ul>
+        </div>
+
+        <div class="qa-card">
+          <h3>Infra</h3>
+          <ul>
+            <li>AWS</li>
+            <li>GitHub</li>
+            <li>Redis</li>
+            <li>Docker</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="panel fade-section">
+      <h1>Education</h1>
+      <div class="edu-container">
+        <!-- KH 정보교육원 -->
+        <div class="qa-card">
+          <p class="period">2025.06 ~ 2025.12</p>
+          <h3>KH 정보교육원</h3>
+          <p class="sub">@ AWS 클라우드 기반 DevOps 개발자 양성 과정</p>
+          <ul>
+            <li>AWS 기반 클라우드 인프라 및 DevOps 툴 학습</li>
+            <li>Spring Boot, MySQL, React 등 풀스택 프로젝트 경험</li>
+          </ul>
+        </div>
+
+        <!-- 세종 사이버 대학교 -->
+        <div class="qa-card">
+          <p class="period">2021.03 ~ 2025.02</p>
+          <h3>세종 사이버 대학교 🏫</h3>
+          <p class="sub">@ 조리·서비스 경영학과</p>
+          <ul>
+            <li>1학년 1학기 성적 1위</li>
+            <li>학점 3.81 / 4.5</li>
+          </ul>
+        </div>
+    </section>
+<section id="certifications" class="panel fade-section">
+        <!-- Certifications -->
+        <div class="qa-card">
+          <p class="period">자격증</p>
+          <h3>Certifications</h3>
+          <ul>
+            <li>SQLD – 2025.06 취득</li>
+            <li>정보 처리 기사 – 2025.11 응시 예정</li>
+          </ul>
+        </div>
+      </div>
+</section>
+
+    <!-- Floating Buttons (오른쪽 하단) -->
+    <div class="floating-buttons">
+      <div class="fab-tooltip">
+    <a href="mailto:crg1050@gmail.com" class="fab-btn">✉</a>
+    <span class="tooltip-text">yechan0422@gmail.com</span>
+  </div>
+      <div class="fab-tooltip">
+    <button onclick="scrollToTop()" class="fab-btn">⬆</button>
+    <span class="tooltip-text">Top</span>
+  </div>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>

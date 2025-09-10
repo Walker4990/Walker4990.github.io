@@ -1,0 +1,712 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #111;
+  color: #fff; /* 전체 흰색 */
+  scroll-behavior: smooth;
+}
+#projects,
+#interview,
+#skills,
+#education,
+#certifications {
+  scroll-margin-top: 80px; /* 버튼 눌렀을 때 위에서 80px 띄우고 멈춤 */
+}
+.sidebar .nav-btn {
+  display: block;
+  padding: 10px 15px;
+  margin: 5px 0;
+  background: #222;
+  color: #fff;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.sidebar .nav-btn:hover {
+  background: #444;
+}
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 2000;
+}
+.sidebar button {
+  background: #222;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+.sidebar button:hover {
+  background: #444;
+  transform: scale(1.05);
+}
+
+/* Panel */
+.panel {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #111;
+  flex-direction: column;
+  /* position: sticky; 제거 → 이게 있으면 항상 붙어있어서 스크롤 이동이 티 안 남 */
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  background: url("images/bg-pattern.png") no-repeat center/cover;
+}
+.hero-text .big {
+  font-size: 7.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.1);
+}
+.hero h2,
+.hero p {
+  z-index: 1;
+}
+.hero-image img {
+  margin-top: 30px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+/* Fade-in */
+.fade-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+.fade-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* About */
+.about-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 10%;
+}
+.about-text {
+  flex: 1;
+}
+.about-img img {
+  width: 250px;
+  border-radius: 50%;
+}
+
+.interview-section {
+  background: #111;
+  color: #fff;
+  padding: 0px 20px 150px; /* 위쪽 패딩을 80 → 40으로 줄임 */
+  text-align: center;
+}
+.qa-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px; /* 카드 사이 간격 조금 더 띄움 */
+}
+.qa-card {
+  background: #222;
+  border-radius: 12px;
+  padding: 20px;
+  width: 90%;
+  max-width: 800px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  /* 카드 높이 통일 */
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.qa-card h3 {
+  margin-bottom: 10px;
+}
+.qa-card p {
+  color: #ddd;
+}
+
+/* Project Section */
+.projects-section {
+  background: #111;
+  color: #fff;
+  padding: 0px 20px;
+  text-align: center;
+}
+
+.project-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.project-card {
+  background: #222;
+  border-radius: 12px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.project-card:hover {
+  transform: translateY(-10px);
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* 모달 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* 모달 컨텐츠 */
+.modal-content {
+  background: #2c2c2c;
+  margin: 3% auto;
+  width: 80%;
+  height: 90%; /* 고정 높이 */
+  border-radius: 20px; /* 적당히 둥글게 */
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  overflow: hidden; /* 모서리 밖 삐져나옴 방지 */
+}
+
+/* 헤더 (고정) */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #444;
+  position: sticky;
+  top: 0;
+  background: #2c2c2c;
+  z-index: 10;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+/* 닫기 버튼 */
+.modal-header .close {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* 본문 (스크롤 전용) */
+.modal-body {
+  flex: 1; /* 남은 공간 차지 */
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* 푸터 (고정) */
+.modal-footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 15px 20px;
+  border-top: 1px solid #444;
+  background: #2c2c2c;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.modal-footer button,
+.modal-footer a {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #444;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.modal-footer button:hover,
+.modal-footer a:hover {
+  background: #666;
+}
+/* 버튼 공통 스타일 */
+.btn-link {
+  display: inline-block;
+  padding: 8px 14px;
+  margin-top: 6px;
+  border-radius: 6px;
+  background: #444;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.btn-link:hover {
+  background: #666;
+}
+code {
+  background: #f5f5f5; /* 배경색 (연회색) */
+  color: #d6336c; /* 글자색 (빨간 느낌) */
+  padding: 2px 6px; /* 안쪽 여백 */
+  border-radius: 4px; /* 모서리 둥글게 */
+  font-family: "Fira Code", "Consolas", monospace; /* 코드 전용 폰트 */
+  font-size: 0.95em;
+}
+/* 아코디언 */
+.accordion-btn {
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: #444;
+  color: #fff;
+  margin-top: 8px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+.accordion-btn:hover {
+  background: #555;
+}
+
+.accordion-content {
+  display: none;
+  padding: 10px;
+  background: #333;
+  margin-bottom: 8px;
+  border-radius: 6px;
+}
+
+/* 모달 등장 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating Buttons */
+.floating-buttons {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 2000;
+}
+.fab-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fab-btn:hover {
+  transform: scale(1.1);
+  background: #f0f0f0;
+}
+.skills-section {
+  background: #111;
+  color: #fff;
+  padding: 0px 20px;
+  text-align: center;
+}
+
+.skills-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.skills-section .qa-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch; /* 모든 카드 높이 동일하게 */
+}
+
+.skills-section .qa-card {
+  background: #222;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  min-width: 220px;
+  height: 100%; /* 높이 균일화 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* 태블릿 화면일 때 (2개씩) */
+@media (max-width: 1024px) {
+  .skills-section .qa-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 모바일 화면일 때 (1개씩) */
+@media (max-width: 600px) {
+  .skills-section .qa-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skills-section h3 {
+  margin-bottom: 15px;
+  color: #f0f0f0;
+  text-decoration: underline;
+}
+
+.skills-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.skills-section li {
+  margin: 8px 0;
+  color: #ddd;
+}
+/* Education 섹션 전용 */
+#education .edu-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap; /* 좁은 화면에서 자동 줄바꿈 */
+}
+
+#education .qa-card {
+  background: #2c2c2c;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 1 1 30%; /* 카드 3개 균등 분배 */
+  min-width: 280px;
+  color: #ddd;
+}
+
+#education .period {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+#education .sub {
+  font-size: 0.95rem;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+#education ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+#education li {
+  margin-bottom: 6px;
+}
+ul img {
+  display: block;
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+ul table {
+  margin-top: 10px;
+  border: 1px solid #666;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.image-row {
+  display: flex;
+  gap: 15px; /* 이미지 간 간격 */
+  justify-content: flex-start; /* 왼쪽 정렬 (필요시 center/space-around로 변경 가능) */
+  flex-wrap: wrap; /* 화면이 좁아지면 자동 줄바꿈 */
+  margin-top: 10px;
+}
+
+.image-row img {
+  max-width: 30%; /* 3개 이미지를 균등 분할 */
+  border-radius: 8px;
+  object-fit: cover;
+}
+.image-row {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.image-row img {
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.image-row img:hover {
+  transform: scale(1.05); /* 살짝 확대되는 효과 */
+}
+
+/* 모달 스타일 */
+.img-modal {
+  display: none; /* 기본은 숨김 */
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.img-modal .modal-content {
+  max-width: 90%; /* 화면 크기에 맞춤 */
+  max-height: 90%;
+  margin-top: 5%;
+  border-radius: 8px;
+  object-fit: contain; /* 원본 비율 유지 */
+}
+
+.img-modal .close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+.video-row {
+  display: flex;
+  gap: 20px; /* 영상 사이 간격 */
+  margin-top: 10px;
+  justify-content: flex-start;
+  flex-wrap: wrap; /* 화면이 좁아지면 줄바꿈 */
+}
+
+.video-card {
+  flex: 1 1 45%; /* 반응형: 한 줄에 2개 (최대 45%) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.video-card h4 {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #fff; /* 어두운 배경이면 흰색 글자 */
+}
+
+.video-card video {
+  width: 100%; /* 카드 너비에 맞춤 */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+/* 특정 영상만 50% */
+.half-video {
+  width: 50% !important; /* 강제로 50% 적용 */
+}
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.hero-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* 1줄: 텍스트 */
+.hero-text {
+  max-width: 700px;
+  padding: 20px;
+}
+
+/* 2줄: 프로필 + Contact */
+.hero-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.profile-pic {
+  width: 300px;
+  height: 400px; /* 세로 줄이면 타원 */
+  border-radius: 50% / 35%; /* 가로/세로 비율 다르게 */
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Contact 박스 */
+.contact-box {
+  background: #222;
+  padding: 20px 30px;
+  border-radius: 12px;
+  width: 280px;
+  color: #fff;
+  text-align: left;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.contact-box h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+.contact-box img {
+  width: 50px;
+  height: 50px;
+}
+.floating-buttons {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.fab-btn {
+  background: #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  font-size: 20px;
+  color: #000;
+  transition: background 0.2s;
+}
+
+.fab-btn:hover {
+  background: #ddd;
+}
+
+/* Tooltip 컨테이너 */
+.fab-tooltip {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Tooltip 텍스트 */
+.tooltip-text {
+  position: absolute;
+  right: 60px; /* 아이콘 오른쪽 간격 */
+  background: #222;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none; /* 마우스 안 걸리게 */
+  font-size: 14px;
+}
+
+/* Hover 시 Tooltip 표시 */
+.fab-tooltip:hover .tooltip-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+.box {
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 8px; /* 아이콘과 텍스트 간격 */
+}
+.text {
+  font-size: 16px;
+  color: #fff; /* 기본 흰색 */
+  text-decoration: none; /* 밑줄 제거 */
+}
+
+.text:visited {
+  color: #fff; /* 방문 후에도 흰색 유지 */
+}
+
+.text:hover {
+  color: #1da1f2; /* 호버 시 원하는 색상 (예: 파란색) */
+  text-decoration: underline; /* 원하면 밑줄 */
+}
+.icon {
+  width: 24px; /* 아이콘 크기 통일 */
+  height: 24px;
+}
+.mail-text {
+  font-size: 16px;
+  color: #fff; /* 필요 시 색상 조절 */
+}
+.v-icon {
+  border-radius: 10px;
+}
