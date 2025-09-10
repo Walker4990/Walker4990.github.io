@@ -738,3 +738,54 @@ ul table {
     display: block;
   }
 }
+/* 모바일 화면 최적화 */
+@media (max-width: 768px) {
+  /* About 섹션: 세로 배치 */
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px; /* 좌우 여백 줄이기 */
+  }
+  .about-img img {
+    margin-top: 20px;
+    width: 200px; /* 모바일에서 조금 줄임 */
+  }
+
+  /* Hero */
+  .hero-text .big {
+    font-size: 4rem; /* 글자 크기 축소 */
+  }
+  .profile-pic {
+    width: 220px;
+    height: 280px;
+  }
+
+  /* 프로젝트 카드: 가로 → 세로 */
+  .project-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .project-card {
+    width: 90%; /* 화면 가득 차도록 */
+  }
+
+  /* QA 카드 (interview/skills/education 공통) */
+  .qa-card {
+    width: 100%;
+    min-height: auto; /* 높이 제한 풀어줌 */
+  }
+
+  /* 영상 카드: 한 줄에 하나씩 */
+  .video-card {
+    flex: 1 1 100%;
+  }
+
+  /* Sidebar 숨기고 모바일 메뉴 사용 */
+  .sidebar {
+    display: none;
+  }
+  .mobile-menu {
+    display: flex;
+    width: 200px;
+  }
+}
