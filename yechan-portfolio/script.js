@@ -77,5 +77,18 @@ document.querySelectorAll(".sidebar button").forEach((btn) => {
 });
 function toggleMenu() {
   const menu = document.querySelector(".mobile-menu");
-  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  if (menu.style.display === "flex") {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "flex";
+  }
 }
+const hamburger = document.querySelector(".hamburger");
+const mobileMenu = document.querySelector(".mobile-menu");
+
+// 새로고침 시 무조건 닫힌 상태 유지
+mobileMenu.classList.remove("active");
+
+hamburger.addEventListener("click", () => {
+  mobileMenu.classList.toggle("active");
+});

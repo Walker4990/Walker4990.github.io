@@ -717,7 +717,7 @@ ul table {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 3000;
 }
 
 /* 기본은 숨김 */
@@ -785,7 +785,139 @@ ul table {
     display: none;
   }
   .mobile-menu {
+    display: none; /* 기본은 닫힘 */
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    background: rgba(17, 17, 17, 0.95);
+    padding: 80px 20px 20px;
+    z-index: 4000;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.6);
+    transform: translateX(100%); /* 화면 밖 */
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-menu.active {
+    display: flex; /* 버튼 클릭 시 보이게 */
+    transform: translateX(0); /* 화면 안으로 들어옴 */
+  }
+}
+/* ===== 전체 모바일 화면 최적화 ===== */
+@media (max-width: 768px) {
+  body,
+  html {
+    overflow-x: hidden; /* 가로 스크롤 완전 차단 */
+  }
+
+  /* Hero */
+  .hero {
+    flex-direction: column;
+    height: auto;
+    padding: 40px 20px;
+  }
+  .hero-container,
+  .hero-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-text {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+  .hero-text .big {
+    font-size: 3rem;
+  }
+  .profile-pic {
+    width: 180px;
+    height: 220px;
+    margin: 20px 0;
+  }
+  .contact-box {
+    width: 90%;
+    margin: 20px auto 0 auto;
+  }
+
+  /* About */
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .about-img img {
+    width: 180px;
+    margin-top: 20px;
+  }
+
+  /* Interview, Skills, Education */
+  .qa-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .qa-card {
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+  }
+
+  /* Projects */
+  .project-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .project-card {
+    width: 90%;
+    max-width: 100%;
+  }
+
+  /* Education 카드 */
+  #education .edu-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  #education .qa-card {
+    width: 90%;
+    max-width: 100%;
+  }
+
+  /* 영상 */
+  .video-row {
+    flex-direction: column;
+  }
+  .video-card {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  /* 사이드바 → 햄버거 메뉴 */
+  .sidebar {
+    display: none;
+  }
+  .mobile-menu {
     display: flex;
     width: 200px;
+  }
+  .panel,
+  .hero,
+  .about-section,
+  .projects-section,
+  .interview-section,
+  .skills-section,
+  #education,
+  #certifications {
+    min-height: auto !important; /* 내용 길이에 맞게 */
+    height: auto !important;
+    overflow: visible !important; /* 잘림 방지 */
+  }
+
+  body,
+  html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden; /* 가로 스크롤 제거 */
+    overflow-y: auto; /* 세로 스크롤 허용 */
   }
 }
