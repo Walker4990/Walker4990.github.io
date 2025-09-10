@@ -85,10 +85,32 @@ function toggleMenu() {
 }
 const hamburger = document.querySelector(".hamburger");
 const mobileMenu = document.querySelector(".mobile-menu");
+const menuLinks = document.querySelectorAll(".mobile-menu a");
 
-// 새로고침 시 무조건 닫힌 상태 유지
-mobileMenu.classList.remove("active");
+// 새로고침 시 항상 닫힌 상태
+window.addEventListener("load", () => {
+  mobileMenu.classList.remove("active");
+});
 
+// 햄버거 클릭 → 토글
 hamburger.addEventListener("click", () => {
   mobileMenu.classList.toggle("active");
+});
+
+// 메뉴 항목 클릭 시 자동 닫힘
+menuLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+  });
+});
+
+// 바깥쪽 클릭 시 닫힘
+document.addEventListener("click", (e) => {
+  if (
+    mobileMenu.classList.contains("active") &&
+    !mobileMenu.contains(e.target) &&
+    !hamburger.contains(e.target)
+  ) {
+    mobileMenu.classList.remove("active");
+  }
 });

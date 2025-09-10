@@ -784,8 +784,8 @@ ul table {
   .sidebar {
     display: none;
   }
+  /* 모바일 메뉴: 항상 DOM에 있지만 화면 밖 */
   .mobile-menu {
-    display: none; /* 기본은 닫힘 */
     flex-direction: column;
     position: fixed;
     top: 0;
@@ -796,13 +796,22 @@ ul table {
     padding: 80px 20px 20px;
     z-index: 4000;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.6);
-    transform: translateX(100%); /* 화면 밖 */
+
+    transform: translateX(100%); /* 기본은 화면 밖 */
     transition: transform 0.3s ease;
   }
 
+  .mobile-menu a {
+    padding: 15px 0;
+    border-bottom: 1px solid #444;
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+  }
+
+  /* 열릴 때 */
   .mobile-menu.active {
-    display: flex; /* 버튼 클릭 시 보이게 */
-    transform: translateX(0); /* 화면 안으로 들어옴 */
+    transform: translateX(0); /* 화면 안으로 슬라이드 */
   }
 }
 /* ===== 전체 모바일 화면 최적화 ===== */
