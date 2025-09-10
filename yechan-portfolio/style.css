@@ -710,3 +710,31 @@ ul table {
 .v-icon {
   border-radius: 10px;
 }
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+/* 기본은 숨김 */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #111;
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* 모바일일 때만 햄버거 표시 */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}
