@@ -11,6 +11,7 @@ html {
   max-width: 100%;
   overflow-x: hidden; /* 가로 스크롤 제거 */
   overflow-y: auto; /* 세로 스크롤 허용 */
+  height: 100%;
 }
 
 #projects,
