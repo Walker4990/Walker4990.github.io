@@ -23,10 +23,25 @@ function scrollToTop() {
 
 // 모달 열기/닫기
 function openModal(id) {
-  document.getElementById(id + "Modal").style.display = "block";
+  const modal = document.getElementById(id + "Modal");
+  if (!modal) {
+    console.error("❌ Modal not found:", id + "Modal");
+    return;
+  }
+
+  modal.style.display = "flex";
+  modal.style.justifyContent = "center";
+  modal.style.alignItems = "center";
+  modal.style.zIndex = "9999";
+  document.body.style.overflow = "hidden"; // 배경 스크롤 막기
 }
+
 function closeModal(id) {
-  document.getElementById(id + "Modal").style.display = "none";
+  const modal = document.getElementById(id + "Modal");
+  if (modal) {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
 }
 
 // 아코디언 토글
