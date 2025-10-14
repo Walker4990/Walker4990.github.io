@@ -170,115 +170,73 @@
 </ul>
       <h2>👩🏻‍💻 내가 기여한 부분</h2>
       <ul>
-         <strong>[출고 트랜잭션 성능 개선]</strong> 응답속도 297ms → 5ms, 커밋 비용 90%↓, 재고 오류 0건 보장
-   
-<table style="width:100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; text-align: center;">
-  <thead>
-    <tr style="background: #444; color: #fff;">
-      <th style="padding: 8px; border: 1px solid #666;">동시 사용자</th>
-      <th style="padding: 8px; border: 1px solid #666;">평균 응답속도</th>
-      <th style="padding: 8px; border: 1px solid #666;">최대 응답속도</th>
-      <th style="padding: 8px; border: 1px solid #666;">Error율</th>
-      <th style="padding: 8px; border: 1px solid #666;">TPS (초당 처리량)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 6px; border: 1px solid #666;">Before</td>
-      <td style="padding: 6px; border: 1px solid #666;">297ms+ (지연 심각)</td>
-      <td style="padding: 6px; border: 1px solid #666;">500ms+ (Timeout 발생)</td>
-      <td style="padding: 6px; border: 1px solid #666;">❌ 100%</td>
-      <td style="padding: 6px; border: 1px solid #666;">❌ 처리 실패</td>
-    </tr>
-    <tr>
-      <td style="padding: 6px; border: 1px solid #666;">After (50명)</td>
-      <td style="padding: 6px; border: 1px solid #666;">17ms</td>
-      <td style="padding: 6px; border: 1px solid #666;">46ms</td>
-      <td style="padding: 6px; border: 1px solid #666;">✅ 0%</td>
-      <td style="padding: 6px; border: 1px solid #666;">1.8/sec</td>
-    </tr>
-    <tr>
-      <td style="padding: 6px; border: 1px solid #666;">After (100명)</td>
-      <td style="padding: 6px; border: 1px solid #666;">16ms</td>
-      <td style="padding: 6px; border: 1px solid #666;">32ms</td>
-      <td style="padding: 6px; border: 1px solid #666;">✅ 0%</td>
-      <td style="padding: 6px; border: 1px solid #666;">3.4/sec</td>
-    </tr>
-    <tr>
-      <td style="padding: 6px; border: 1px solid #666;">After (200명)</td>
-      <td style="padding: 6px; border: 1px solid #666;">14ms</td>
-      <td style="padding: 6px; border: 1px solid #666;">32ms</td>
-      <td style="padding: 6px; border: 1px solid #666;">✅ 0%</td>
-      <td style="padding: 6px; border: 1px solid #666;">6.7/sec</td>
-    </tr>
-    <tr>
-      <td style="padding: 6px; border: 1px solid #666;">After (300명)</td>
-      <td style="padding: 6px; border: 1px solid #666;">13ms</td>
-      <td style="padding: 6px; border: 1px solid #666;">31ms</td>
-      <td style="padding: 6px; border: 1px solid #666;">✅ 0%</td>
-      <td style="padding: 6px; border: 1px solid #666;">10/sec</td>
-    </tr>
-    <tr>
-      <td style="padding: 6px; border: 1px solid #666;">After (1000명)</td>
-      <td style="padding: 6px; border: 1px solid #666;">13ms</td>
-      <td style="padding: 6px; border: 1px solid #666;">38ms</td>
-      <td style="padding: 6px; border: 1px solid #666;">⚠️ 0.08%</td>
-      <td style="padding: 6px; border: 1px solid #666;">8.8/sec</td>
-    </tr>
-  </tbody>
-</table>
+        <section style="margin-top: 32px; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); color: #ddd; font-family: 'Pretendard', sans-serif;">
 
+  <!-- 출고 트랜잭션 성능 개선 -->
+  <h3 style="color: #00e0ff; font-size: 1.1rem; margin-bottom: 12px;">
+    ⚙️ <strong>출고 트랜잭션 성능 개선</strong>
+  </h3>
+  <p style="margin-bottom: 8px;">응답속도 <strong>297ms → 5ms</strong>, 커밋 비용 <strong>90%↓</strong>, 재고 오류 <strong>0건 보장</strong></p>
 
-        <p><strong>[재고 관리 최적화]</strong> Redis 캐시 적용 → 응답속도 55배 개선</p>
-        <table style="width:100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; text-align: center;">
-  <thead>
-    <tr style="background: #444; color: #fff;">
-      <th style="padding: 8px; border: 1px solid #666;">동시 사용자</th>
-      <th style="padding: 8px; border: 1px solid #666;">평균 응답(ms) Before</th>
-      <th style="padding: 8px; border: 1px solid #666;">평균 응답(ms) After</th>
-      <th style="padding: 8px; border: 1px solid #666;">Error%</th>
-      <th style="padding: 8px; border: 1px solid #666;">TPS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 6px; border: 1px solid #666;">1</td>
-      <td style="padding: 6px; border: 1px solid #666;">39</td>
-      <td style="padding: 6px; border: 1px solid #666;"><strong>3</strong></td>
-      <td style="padding: 6px; border: 1px solid #666;">0.0%</td>
-      <td style="padding: 6px; border: 1px solid #666;">85.5/sec</td>
-    </tr>
-    <tr>
-      <td style="padding: 6px; border: 1px solid #666;">50</td>
-      <td style="padding: 6px; border: 1px solid #666;">38</td>
-      <td style="padding: 6px; border: 1px solid #666;"><strong>2</strong></td>
-      <td style="padding: 6px; border: 1px solid #666;">0.0%</td>
-      <td style="padding: 6px; border: 1px solid #666;">8.8/sec</td>
-    </tr>
-    <tr>
-      <td style="padding: 6px; border: 1px solid #666;">100</td>
-      <td style="padding: 6px; border: 1px solid #666;">40</td>
-      <td style="padding: 6px; border: 1px solid #666;"><strong>1</strong></td>
-      <td style="padding: 6px; border: 1px solid #666;">0.0%</td>
-      <td style="padding: 6px; border: 1px solid #666;">17.9/sec</td>
-    </tr>
-    <tr>
-      <td style="padding: 6px; border: 1px solid #666;">500</td>
-      <td style="padding: 6px; border: 1px solid #666;">55</td>
-      <td style="padding: 6px; border: 1px solid #666;"><strong>1</strong></td>
-      <td style="padding: 6px; border: 1px solid #666;">0.0%</td>
-      <td style="padding: 6px; border: 1px solid #666;">83.5/sec</td>
-    </tr>
-    <tr>
-      <td style="padding: 6px; border: 1px solid #666;">1000</td>
-      <td style="padding: 6px; border: 1px solid #666;">55</td>
-      <td style="padding: 6px; border: 1px solid #666;"><strong>1</strong></td>
-      <td style="padding: 6px; border: 1px solid #666;">0.0%</td>
-      <td style="padding: 6px; border: 1px solid #666;">166/sec</td>
-    </tr>
-  </tbody>
-</table>
+  <table style="width:100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; text-align: center;">
+    <thead>
+      <tr style="background: #444; color: #fff;">
+        <th style="padding: 8px; border: 1px solid #666;">동시 사용자</th>
+        <th style="padding: 8px; border: 1px solid #666;">평균 응답속도</th>
+        <th style="padding: 8px; border: 1px solid #666;">최대 응답속도</th>
+        <th style="padding: 8px; border: 1px solid #666;">Error율</th>
+        <th style="padding: 8px; border: 1px solid #666;">TPS (초당 처리량)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Before</td><td>297ms+ (지연 심각)</td><td>500ms+ (Timeout)</td><td>❌ 100%</td><td>❌ 처리 실패</td></tr>
+      <tr><td>After (50명)</td><td>17ms</td><td>46ms</td><td>✅ 0%</td><td>1.8/sec</td></tr>
+      <tr><td>After (100명)</td><td>16ms</td><td>32ms</td><td>✅ 0%</td><td>3.4/sec</td></tr>
+      <tr><td>After (200명)</td><td>14ms</td><td>32ms</td><td>✅ 0%</td><td>6.7/sec</td></tr>
+      <tr><td>After (300명)</td><td>13ms</td><td>31ms</td><td>✅ 0%</td><td>10/sec</td></tr>
+      <tr><td>After (1000명)</td><td>13ms</td><td>38ms</td><td>⚠️ 0.08%</td><td>8.8/sec</td></tr>
+    </tbody>
+  </table>
+
+  <div style="text-align:center; margin-top: 12px;">
+    <img src="../Image/출고 성능 개선.png" width="420px" style="border-radius:8px; border:1px solid #333;" onclick="openImageModal(this)">
+  </div>
+</section>
+
+ <section style="margin-top: 32px; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); color: #ddd; font-family: 'Pretendard', sans-serif;">
+  <!-- Redis 캐시 성능 개선 -->
+  <h3 style="color: #00ff88; font-size: 1.1rem; margin-bottom: 12px;">
+    ⚡ <strong>재고 관리 최적화 (Redis 캐시 적용)</strong>
+  </h3>
+  <p style="margin-bottom: 8px;">Redis 캐시 적용 → 응답속도 <strong>55배 개선</strong>, DB 부하 <strong>80% 감소</strong></p>
+
+  <table style="width:100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; text-align: center;">
+    <thead>
+      <tr style="background: #444; color: #fff;">
+        <th style="padding: 8px; border: 1px solid #666;">동시 사용자</th>
+        <th style="padding: 8px; border: 1px solid #666;">평균 응답(ms) Before</th>
+        <th style="padding: 8px; border: 1px solid #666;">평균 응답(ms) After</th>
+        <th style="padding: 8px; border: 1px solid #666;">Error%</th>
+        <th style="padding: 8px; border: 1px solid #666;">TPS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>39</td><td><strong>3</strong></td><td>0.0%</td><td>85.5/sec</td></tr>
+      <tr><td>50</td><td>38</td><td><strong>2</strong></td><td>0.0%</td><td>8.8/sec</td></tr>
+      <tr><td>100</td><td>40</td><td><strong>1</strong></td><td>0.0%</td><td>17.9/sec</td></tr>
+      <tr><td>500</td><td>55</td><td><strong>1</strong></td><td>0.0%</td><td>83.5/sec</td></tr>
+      <tr><td>1000</td><td>55</td><td><strong>1</strong></td><td>0.0%</td><td>166/sec</td></tr>
+    </tbody>
+  </table>
+
+  <div style="text-align:center; margin-top: 12px;">
+    <img src="../Image/Redis캐시 적용 전후 비교.png" width="420px" style="border-radius:8px; border:1px solid #333;" onclick="openImageModal(this)">
+  </div>
+
+</section>
+<section style="margin-top: 32px; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); color: #ddd; font-family: 'Pretendard', sans-serif;">
         <p><strong>[재무 회계 관리]</strong> 급여·수입/지출·세금 납부 자동화</p>
+
         <div class="video-row">
   <div class="video-card">
      <h4>급여·수입/지출·세금 납부 자동화</h4>
@@ -288,8 +246,11 @@
 </video>
 </div>
 </div>
+</section>
+<section style="margin-top: 32px; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); color: #ddd; font-family: 'Pretendard', sans-serif;">
         <p><strong>[계약 관리 모듈]</strong> 작가·도서·계약 트랜잭션 기반 동시 등록 및 데이터 정합성 확보</p>
-        
+        </section>
+        <section style="margin-top: 32px; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); color: #ddd; font-family: 'Pretendard', sans-serif;">
 <p><strong>[발주/검수/출고 시스템]</strong> 전 과정 자동화 및 상태 기반 관리</p>
 
 <div class="video-row">
@@ -309,13 +270,18 @@
     </video>
   </div>
 </div>
+</section>
+<section style="margin-top: 32px; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); color: #ddd; font-family: 'Pretendard', sans-serif;">
         <p><strong>[메인 대시보드 차트]</strong> Chart.js 시각화 및 Ajax 갱신</p>
         <img src="../Image/chart.jpg" width="400px" onclick="openImageModal(this)">
+        </section>
+        <section style="margin-top: 32px; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); color: #ddd; font-family: 'Pretendard', sans-serif;">
         <p><strong>[캘린더 계약/휴가 일정 관리]</strong> FullCalendar 연동 및 계약 조회 / 등록 및 휴가 승인/차감 로직</p>
         <div class="image-row">
   <img src="../Image/계약등록 캘린더.png" width="400px" onclick="openImageModal(this)">
   <img src="../Image/캘린더 계약 모달 2025-09-10 121634.png" width="400px" onclick="openImageModal(this)">
 </div>
+</section>
       </ul>
 <!-- 이미지 확대 모달 -->
 <div id="imgModal" class="img-modal" onclick="closeImageModal()">
@@ -652,8 +618,10 @@ docker run -d --name redis -p 6379:6379 redis:latest
     <div class="modal-body">
       <ul>
         <p>
-          개인 프로젝트로 개발한 <strong>정기결제 관리 플랫폼</strong>입니다.<br>
-          Toss Payments API와 Webhook 기반 결제 자동화 시스템을 구현했습니다.<br>
+          개인 프로젝트로 개발한 정기결제 관리 플랫폼으로,<br>
+<strong>Toss Payments Webhook</strong>과 <strong>WebSocket(STOMP)</strong> 기반의 <br>
+실시간 결제·구독·채팅 자동화 시스템을 구현했습니다.<br>
+         
           <a href="https://github.com/Walker4990/recurv" target="_blank" class="btn-link">GitHub</a> ㅤㅤ
         </p>
 
@@ -662,41 +630,79 @@ docker run -d --name redis -p 6379:6379 redis:latest
       </ul>
 
       <h2>👩🏻‍💻 주요 구현 기능</h2>
-      <ul>
-        <li><strong>[Toss Webhook 기반 결제 자동화]</strong>  
-          Webhook 이벤트(`CONFIRMED`, `CANCELED`, `REFUNDED`) 실시간 처리로 결제 → 구독 → 인보이스 → 수익기록 자동화.  
-          <br><em>성과:</em> DB 반영 1초 이내 / 중복 이벤트 0% / 데이터 불일치 0건
-        </li>
+      
+<!-- 실시간 고객 지원 채팅 -->
+<section style="margin-top:32px; padding:16px; background:rgba(255,255,255,0.03);
+  border-radius:12px; border:1px solid rgba(255,255,255,0.1); color:#ddd;">
+  <h3 style="color:#00ffcc;">💬 [실시간 고객 지원 채팅 (WebSocket + STOMP)]</h3>
+  <p>
+    <code>/topic/support/{partnerNo}</code> 기반의 실시간 1:1 상담 채팅 구현.<br>
+    메시지 읽음·미확인 처리로 사용자 경험(UX) 개선.
+  </p>
+  <div style="text-align:center; margin-top:10px;">
+    <img src="../Video/실시간 고객 문의.gif" width="420px"
+         style="border-radius:8px; border:1px solid #333;" onclick="openImageModal(this)">
+  </div>
+</section>
 
-        <li><strong>[Redis 캐시 기반 조회 성능 개선]</strong>  
-          파트너 목록 API 캐싱으로 응답속도 297ms → 5ms (약 60배 향상),  
-          3000명 부하테스트에서도 Error 0% 유지
-        </li>
+<!-- Redis 캐시 성능 개선 -->
+<section style="margin-top:32px; padding:16px; background:rgba(255,255,255,0.03);
+  border-radius:12px; border:1px solid rgba(255,255,255,0.1); color:#ddd;">
+  <h3 style="color:#00ff88;">⚡ [Redis 캐시 기반 조회 성능 개선]</h3>
+  <p>
+    파트너 목록 API 캐싱으로 응답속도 <strong>297ms → 5ms</strong> (약 60배 향상).<br>
+    3000명 부하 테스트에서도 <strong>Error 0%</strong> 유지.
+  </p>
+  <div style="text-align:center; margin-top:10px;">
+    <img src="../Image/성능테스트 그래프.png" width="420px"
+         style="border-radius:8px; border:1px solid #333;" onclick="openImageModal(this)">
+  </div>
+</section>
 
-        <li><strong>[실시간 고객 지원 채팅(WebSocket + STOMP)]</strong>  
-          `/topic/support/{partnerNo}` 기반 실시간 1:1 상담 채팅 구현 (읽음·미확인 처리)
-        </li>
+<!-- 부하 테스트 결과 -->
+<section style="margin-top:32px; padding:16px; background:rgba(255,255,255,0.03);
+  border-radius:12px; border:1px solid rgba(255,255,255,0.1); color:#ddd;">
+  <h3 style="color:#00e0ff;">🚀 [성능 개선 및 부하 테스트 (JMeter)]</h3>
+  <p>250 → 3000명 단계별 부하 시나리오 테스트 수행</p>
 
-        <li><strong>[성능 개선 및 부하 테스트(JMeter)]</strong>  
-          250 → 3000명 단계별 부하 시나리오 테스트,  
-          평균 응답속도 3060ms / Throughput 732/sec / Error 0%
-        </li>
-      </ul>
+  <table style="width:100%; border-collapse:collapse; text-align:center; font-size:14px;">
+    <thead style="background-color:#1e1e1e; color:#00ffcc;">
+      <tr>
+        <th>구간</th><th>평균 응답속도(ms)</th><th>Throughput(req/sec)</th><th>해석</th>
+      </tr>
+    </thead>
+    <tbody style="color:#ddd;">
+      <tr style="background-color:rgba(255,255,255,0.04);">
+        <td><b>1000명</b></td><td>300</td><td>784</td><td>매우 빠르고 안정적 (준실시간)</td>
+      </tr>
+      <tr><td><b>2000명</b></td><td>1655</td><td>769</td><td>부하 증가에 따른 지연 (정상)</td></tr>
+      <tr style="background-color:rgba(255,255,255,0.04);">
+        <td><b>3000명</b></td><td>3762</td><td>636</td><td>응답속도 증가 시작, 포화 임박</td>
+      </tr>
+      <tr><td><b>4000명</b></td><td>6141</td><td>555</td><td>처리율 하락, 포화 상태</td></tr>
+    </tbody>
+  </table>
 
-      <h2>🖥️ TECH STACK</h2>
-      <ul>
-        <p><strong>Spring Boot 3.3:</strong> RESTful API 중심 아키텍처 설계 및 내장 Tomcat 운영</p>
-        <p><strong>Spring Data JPA:</strong> `payment–subscription–invoice–finance` 간 트랜잭션 자동화</p>
-        <p><strong>MySQL 8.0:</strong> 외래키·인덱스 기반 트랜잭션 일관성 유지</p>
-        <p><strong>Redis:</strong> 캐시 적용으로 응답속도 60배 개선, TTL 기반 자동 만료 설계</p>
-        <p><strong>WebSocket (STOMP):</strong> 실시간 고객 지원 채팅 구현</p>
-        <p><strong>React (with TailwindCSS):</strong> Admin/User 대시보드 SPA 구축</p>
-        <p><strong>Toss Payments API:</strong> Webhook 기반 결제·환불·구독 자동 관리</p>
-        <p><strong>JMeter:</strong> 3000명 부하 테스트, 응답시간·TPS·Error율 정량 검증</p>
-        <p><strong>Docker / ngrok:</strong> Redis 컨테이너 및 Webhook 테스트 환경 구축</p>
-        <p><strong>AWS EC2 / RDS:</strong> 클라우드 배포 및 운영 환경 구성</p>
-      </ul>
+  <p style="color:#999; font-size:0.9rem; margin-top:12px; line-height:1.5;">
+    ※ 로컬 환경의 부하 테스트는 안정적으로 완료되었으며,<br>
+    보다 정확한 네트워크 및 자원 한계 측정을 위해
+    <strong>AWS EC2 환경에서 확장 테스트 예정</strong>.
+  </p>
+</section>
 
+<!-- Toss Webhook 자동화 -->
+<section style="margin-top:32px; padding:16px; background:rgba(255,255,255,0.03);
+  border-radius:12px; border:1px solid rgba(255,255,255,0.1); color:#ddd;">
+  <h3 style="color:#ffa600;">💳 [Toss Webhook 기반 결제 자동화]</h3>
+  <p>
+    Webhook 이벤트 (<code>CONFIRMED</code>, <code>CANCELED</code>, <code>REFUNDED</code>) 실시간 처리로<br>
+    결제 → 구독 → 인보이스 → 수익기록 전 과정을 자동화.<br>
+    <em>성과:</em> DB 반영 <strong>1초 이내</strong> / 중복 이벤트 <strong>0%</strong> / 데이터 불일치 <strong>0건</strong>
+  </p>
+</section>
+
+
+     
       <!-- Accordion for Trouble Shooting -->
 <h2>👟 TROUBLE SHOOTING</h2>
 <div class="accordion">
@@ -901,6 +907,19 @@ docker run -d --name redis -p 6379:6379 redis:latest
     </ul>
   </div>
 </div>
+ <h2>🖥️ TECH STACK</h2>
+      <ul>
+        <p><strong>Spring Boot 3.3:</strong> RESTful API 중심 아키텍처 설계 및 내장 Tomcat 운영</p>
+        <p><strong>Spring Data JPA:</strong> `payment–subscription–invoice–finance` 간 트랜잭션 자동화</p>
+        <p><strong>MySQL 8.0:</strong> 외래키·인덱스 기반 트랜잭션 일관성 유지</p>
+        <p><strong>Redis:</strong> 캐시 적용으로 응답속도 60배 개선, TTL 기반 자동 만료 설계</p>
+        <p><strong>WebSocket (STOMP):</strong> 실시간 고객 지원 채팅 구현</p>
+        <p><strong>React (with TailwindCSS):</strong> Admin/User 대시보드 SPA 구축</p>
+        <p><strong>Toss Payments API:</strong> Webhook 기반 결제·환불·구독 자동 관리</p>
+        <p><strong>JMeter:</strong> 3000명 부하 테스트, 응답시간·TPS·Error율 정량 검증</p>
+        <p><strong>Docker / ngrok:</strong> Redis 컨테이너 및 Webhook 테스트 환경 구축</p>
+        <p><strong>AWS EC2 / RDS:</strong> 클라우드 배포 및 운영 환경 구성</p>
+      </ul>
 
     </div>
 
